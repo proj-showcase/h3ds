@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Closing the Loop: Unified 3D Scene Generation
-        and Immersive Interaction via LLM–RL Coupling.">
+        content="Unified Interaction-Ready 3D Scene Generation via
+LLM–RL Optimization">
   <meta name="keywords" content="Avatar">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unified 3D Scene Generation
-    and Immersive Interaction via LLM-RL Coupling</title>
+  <title>Unified Interaction-Ready 3D Scene Generation via LLM–RL Optimization</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -94,8 +93,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Unified Interaction-Ready 3D Scene Generation via
-LLM–RL Optimization</h1>
+          <h1 class="title is-1 publication-title">Closing the Loop: Unified 3D Scene Generation
+            and Immersive Interaction via LLM-RL Coupling</h1>
           
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -245,7 +244,7 @@ LLM–RL Optimization</h1>
      <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3"> Overview</h2>
-        <img src="./static/images/haptic_system.webp"
+        <img src="./static/images/haptic_system.png"
                  class="interpolation-image"
                  alt="Interpolate start reference image." width="400"/>
         <!--
@@ -263,15 +262,35 @@ LLM–RL Optimization</h1>
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-       Recent advances in LLMs have significantly improved language-driven 3D scene generation, yet existing approaches primarily focus on scene synthesis and treat user interaction 
-          as a separate process, limiting the adaptability and immersive potential of interactive multimedia systems. 
-          This paper presents a unified framework that closes the loop between language-driven scene generation and immersive human-robot interaction in virtual reality. 
-          Given a natural language instruction, the proposed framework constructs a structured scene representation via an LLM-based Language-Driven Scene Representation module, 
-          predicts interaction-relevant viewpoints through a VR-aware model,
-          and optimizes object arrangements under semantic and geometric constraints via a reinforcement learning-based Plan2Place module. 
-          The generated environments are deployed in VR, where users interact through visual and haptic feedback, making interaction a first-class constraint in scene generation by design. 
-          Experiments on the ALFRED benchmark demonstrate state-of-the-art performance in task-based scene generation, object placement, and VR 
-localization, while user studies confirm consistent improvements in immersion, interaction quality, and task efficiency.
+        Language-driven 3D scene generation typically produces
+static layouts that neglect interaction requirements, often omit-
+ting task-implied objects and leaving user placement unde-
+fined. We introduce a unified framework for interaction-ready
+3D environment generation that connects language under-
+standing, spatial construction, and immersive virtual reality
+(VR) human–robot interaction (HRI). Our pipeline integrates
+three core modules: a Language-Driven Scene Representation
+(LDSR) that builds a scene graph of explicit and task-implied
+objects; a VR-Aware Object Role Classification (VR-ORC)
+module that classifies object roles, including the anchor; and
+Plan2Place, a reinforcement-learning placement policy that
+arranges objects under relational, geometric, navigability, and
+affordance constraints. The user’s viewpoint is then initialized
+near the anchor, and the scene is deployed in VR with
+visual and haptic feedback. On ALFRED-based tasks, VR-
+ORC improves key- and inference-role F1 by 34–51 points
+over a rule-based reading of the LDSR scene graph, but its
+gain on the anchor role, which determines the viewpoint, is
+small (1.9–2.9 F1 points). The generated scenes contain every
+required object for 72%–96% of instructions per task category,
+against 4%–20% for Holodeck. On constraint sets from two
+held-out LLMs, Plan2Place places and keeps reachable more
+key objects than DFS, MILP, and Z3, at the cost of lower
+scene-level completeness than DFS or MILP on some sets. A
+user study of an earlier version of Plan2Place and a VR check
+of viewpoint initialization complement these results. These
+results suggest that interaction requirements can be built into
+scene generation rather than appended post hoc
         </p>
         </div>
       </div>
@@ -285,43 +304,7 @@ localization, while user studies confirm consistent improvements in immersion, i
 
     <div class="columns is-centered">
       
-      <!-- Visual Effects. -->
-      <!--
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    -->
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <!--
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-       -->
+    
     </div>
    
     <!--/ Matting. -->
@@ -331,7 +314,7 @@ localization, while user studies confirm consistent improvements in immersion, i
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered">RESULTS</h2>
 
-        <!-- Interpolating. -->
+        <!-- Interpolating.
         <h3 class="title is-4 has-text-centered">3D INDOOR SCENE GENERATION</h3>
         <br/>
         
@@ -370,48 +353,18 @@ localization, while user studies confirm consistent improvements in immersion, i
                   <img src="./static/images/scenes/d3.png" alt="1"  width="300" />
                 </div>
                 <div class="item item-fullbody">
-                  <!-- <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-                    <source src="./static/videos/fullbody.mp4"
-                            type="video/mp4">
-                  </video> -->
+                 
                   <img src="./static/images/scenes/b5.png" alt="1"  width="300" />
                 </div>
-                <!-- <div class="item item-blueshirt">
-                <img src="./static/videos/a.gif" alt="1"  width="100" />
-                </div> -->
-                
               </div>
             </div>
           </div>
-        </section> 
+        </section>  -->
 
         <h2 class="subtitle has-text-centered">
           <span class="dnerf">A comparison</span> of Our method and HOLODECK.
        </h2>
 
-        <!-- sample 1:  -->   
-       
-        <!--
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-4 has-text-centered" style="text-align:right">
-          
-          </div>
-          
-          <div class="column is-2 has-text-centered" style="text-align:right" width="200" >
-            <p class="is-bold" >CK+ dataset </p>
-          </div>
-
-          <div class="column is-2 has-text-centered">
-            
-          </div>
-
-          <div class="column is-2 has-text-centered">
-            <p class="is-bold" >CelebV dataset</p>
-          </div>
-        </div>
-         -->  
-
-        <!-- sample 1 -->   
         <div class="content has-text-centered">
           <p>
             <span class="dnerf" style="color: black;">Room Type:</span> a living room.
@@ -433,8 +386,7 @@ localization, while user studies confirm consistent improvements in immersion, i
           <!-- <div class="column is-1 has-text-centered" style="text-align:right" width="200" > 
           </div> -->
 
-          <div class="column is-3 has-text-centered" width="400" >
-            <!-- <p class="is-bold" style="text-align:right; color:white;"> w/o NE </p> -->
+          <!-- <div class="column is-3 has-text-centered" width="400" >
             <p class="is-bold" style="text-align:center;"> HOLODECK </p>
             <img src="./static/images/scenes/holodeck1.png" alt="1" width="500" />
           </div>
@@ -442,7 +394,7 @@ localization, while user studies confirm consistent improvements in immersion, i
           <div class="column is-8 has-text-centered">
             <p class="is-bold" style="text-align:center;"> OURS</p>
             <img src="./static/images/scenes/ours1.png" width="800"/>
-          </div>
+          </div> -->
         </div>
 
         <br/>
@@ -456,27 +408,21 @@ localization, while user studies confirm consistent improvements in immersion, i
             <span class="dnerf" style="color: black;">Instruction:</span> Put <span style="color: green;">chilled</span> <span style="color: red;">bread</span> on the <span style="color: orange;">counter</span>.
           </p>
         </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-1 has-text-centered" style="text-align:right">
-            
-          </div>
-          <div class="column is-3 has-text-centered" width="400" >
-            <p class="is-bold" style="text-align:center;"> HOLODECK </p>
-            <img src="./static/images/scenes/holodeck2.png" alt="1" width="500" />
-          </div>
-
-          <div class="column is-8 has-text-centered">
-            <p class="is-bold" style="text-align:center;"> OURS</p>
-            <img src="./static/images/scenes/ours2.png" width="800"/>
+        
+        <div class="content has-text-justified"></div>
+          <div class="columns is-vcentered interpolation-panel has-text-centered">
+            <div class="column is-1 has-text-centered">
+              <p style="text-align:center" class="dnerf"></p>
+            </div>
+          <div class="column is-10 has-text-centered">
+              <p class="is-bold" style="text-align:center; color:white;"> sample 2</p>
+              <img src="./static/images/scenes/sample2.png" alt="1"  width="800"/>
           </div>
         </div>
-
-        <br/>
-
         <!-- Samples with baselines-->
-        <h2 class="subtitle has-text-centered">
-          <span class="dnerf"> Qualitative Comparison with Baseline Methods </span>
-       </h2>
+        <!-- <h2 class="subtitle has-text-centered">
+          <span class="dnerf"> Qualitative Comparison with Baseline Method </span>
+       </h2> -->
         <div class="content has-text-justified">
         
         <!--sample 1-->
@@ -503,7 +449,7 @@ localization, while user studies confirm consistent improvements in immersion, i
 
         <br/>
         <!-- More Samples -->
-        <h2 class="subtitle has-text-centered">
+        <!-- <h2 class="subtitle has-text-centered">
           <span class="dnerf"> Apartment Generation </span>
        </h2>
       
@@ -532,20 +478,15 @@ localization, while user studies confirm consistent improvements in immersion, i
                   <img src="./static/images/scenes/a4.png" alt="1"  width="300" />
                 </div>
                 <div class="item item-fullbody">
-                  <!-- <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-                    <source src="./static/videos/fullbody.mp4"
-                            type="video/mp4">
-                  </video> -->
+                 
                   <img src="./static/images/scenes/a5.png" alt="1"  width="300" />
                 </div>
-                <!-- <div class="item item-blueshirt">
-                <img src="./static/videos/a.gif" alt="1"  width="100" />
-                </div> -->
+        
                 
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
 
         <br/>
@@ -759,8 +700,7 @@ localization, while user studies confirm consistent improvements in immersion, i
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{vo2026,
   author    = {Anh, H. Vo and Sungyo, Lee, and Phil-Joong, Kim and Soo-Mi, Choi and Yong-Guk, Kim},
-  title     = {Unified Interaction-Ready 3D Scene Generation via
-LLM–RL Optimization},
+  title     = {Unified Interaction-Ready 3D Scene Generation via LLM–RL Optimization},
   journal   = {},
   year      = {2026},
 }</code></pre>
